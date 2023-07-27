@@ -1,0 +1,66 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.Header {
+  text-align: center;
+  width: 50%;
+  margin: 10px auto; 
+}
+.Navbar {
+  background-color: #5e666b;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  top: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+.Products {
+  background-color: #f6f6f7;
+  padding: 3rem 0;
+}
+.Product-item {
+  margin-bottom: 2.5rem;
+}
+.Product-item img{
+  width: 100%;
+  min-height:320px;
+  /* max-height:300px; */
+  max-height: 320px;
+}
+.Product-item .product_title {
+  text-align: center;
+  background-color: #636b72;
+}
+.Product-item .product_title .Action {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
+.Product-item .product_title .Action button {
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+}
+.Product-item .product_title .Action span {
+  color: white;
+  font-size: 20px;
+}
+.Product-item .product_title .Action .buyBtn{
+  background-color: rgb(158 221 153);
+}
+.Product-item .product_title .Action .sellBtn {
+  background-color:  rgb(221, 153, 153);
+}
+.Product-item .product_title .Action .sellBtn:hover {
+  background-color: rgb(253, 201, 192);
+}
+.Product-item .product_title .Action .buyBtn:hover {
+  background-color: rgb(204, 252, 200);
+}
