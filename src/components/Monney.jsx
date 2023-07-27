@@ -8,50 +8,6 @@ import { useState, useEffect } from "react";
 export default function Monney() {
   const [state, setState] = useState({
     products: [],
-    // products: [
-    //   {
-    //     id: 1,
-    //     productName: "Iphone 14 promax",
-    //     productImg: "/src/components/product_img/Iphone_14.jpg",
-    //     price: 1599,
-    //     quantity: 0,
-    //   },
-    //   {
-    //     id: 2,
-    //     productName: "Samsung S23 Ultra - 1TB",
-    //     productImg: "/src/components/product_img/Samsung.jpg",
-    //     price: 1499,
-    //     quantity: 0,
-    //   },
-    //   {
-    //     id: 3,
-    //     productName: "Nintendo Switch",
-    //     productImg: "/src/components/product_img/Nintendo.jpg",
-    //     price: 499,
-    //     quantity: 0,
-    //   },
-    //   {
-    //     id: 4,
-    //     productName: "PS5",
-    //     productImg: "/src/components/product_img/PS5.jpg",
-    //     price: 499,
-    //     quantity: 0,
-    //   },
-    //   {
-    //     id: 5,
-    //     productName: "Ipad pro 2022",
-    //     productImg: "/src/components/product_img/Ipad.jpg",
-    //     price: 1300,
-    //     quantity: 0,
-    //   },
-    //   {
-    //     id: 6,
-    //     productName: "AirPods Pro",
-    //     productImg: "/src/components/product_img/AirPods.jpg",
-    //     price: 300,
-    //     quantity: 0,
-    //   },
-    // ],
     totalMonney: 217000000000,
     monney: 0,
     persent: 0,
