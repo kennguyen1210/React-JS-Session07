@@ -14,23 +14,14 @@ export default function Monney() {
     headerImg: "/src/components/product_img/ElonMush.jpg",
   });
   useEffect(() => {
-    let products = localStorage.getItem("Products")
-      ? JSON.parse(localStorage.getItem("Products"))
+    let products = localStorage.getItem("Product")
+      ? JSON.parse(localStorage.getItem("Product"))
       : [];
-
-    let newProducts = products.map((product) => {
-      return {
-        id: product.id,
-        price: product.price,
-        productName: product.name,
-        productImg: "/src/components/images/" + product.image,
-        quantity: 0,
-      };
-    });
+    console.log(products);
     setState((prevState) => {
       return {
         ...prevState,
-        products: [...newProducts],
+        products: [...products],
       };
     });
   }, []);
