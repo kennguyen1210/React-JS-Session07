@@ -4,9 +4,13 @@ import "./Monney.css";
 import Header from "./Header";
 import Navbar from "./Navbar";
 import Product from "./Product";
+import Receipt from "./Receipt";
 import { useState, useEffect } from "react";
+import products from "./products";
 export default function Monney() {
   const [state, setState] = useState({
+    buyList: [],
+    check: false,
     products: [],
     totalMonney: 217000000000,
     monney: 0,
@@ -27,16 +31,33 @@ export default function Monney() {
   }, []);
   function handleBuy(id) {
     // debugger;
-    let { products, totalMonney, monney } = state;
-    let index = products.findIndex((product, index) => product.id === id);
+    let { products, totalMonney, monney, buyList } = state;
+    let index = products.findIndex((product) => product.id === id);
     if (index > -1) {
       products[index].quantity += 1;
       let price = products[index].price;
       totalMonney -= price;
       monney = monney + price;
+      let buyProduct = {
+        id: id,
+        productName: products[index].productName,
+        quantity: products[index].quantity,
+        price: price,
+      };
+      if (buyList.length == 0) {
+        buyList.push(buyProduct);
+      } else {
+        let buyIndex = buyList.findIndex((product) => product.id === id);
+        buyIndex > -1
+          ? (buyList[buyIndex].quantity += 1)
+          : buyList.push(buyProduct);
+      }
+
       setState((prevState) => {
         return {
           ...prevState,
+          buyList: buyList,
+          check: true,
           products: products,
           totalMonney: totalMonney,
           monney: monney,
@@ -46,16 +67,21 @@ export default function Monney() {
     }
   }
   function handleSell(id) {
-    let { products, totalMonney, monney } = state;
+    let { products, totalMonney, monney, buyList } = state;
     let index = products.findIndex((product) => product.id === id);
     if (index > -1) {
       products[index].quantity -= 1;
       let price = products[index].price;
       totalMonney += price;
       monney = monney - price;
+
+      let sellIndex = buyList.findIndex((product) => product.id === id);
+      sellIndex > -1 && (buyList[sellIndex].quantity -= 1);
       setState((prevState) => {
         return {
           ...prevState,
+          buyList: buyList,
+          check: true,
           products: products,
           totalMonney: totalMonney,
           monney: monney,
@@ -90,6 +116,11 @@ export default function Monney() {
             );
           })}
         </div>
+        <Receipt
+          buyList={state.buyList}
+          check={state.check}
+          total={state.monney}
+        />
       </div>
     </div>
   );
